@@ -1,18 +1,18 @@
 PREFIX = /usr/local
 
-lavat: lavat.c
-	$(CC) lavat.c -o lavat
+boids: boids.c termbox.h
+	$(CC) $(CFLAGS) -O2 boids.c -o boids -lm
 
 .PHONY: clean
 clean:
-	$(RM) lavat
+	$(RM) boids
 
 .PHONY: install
-install: lavat
+install: boids
 	mkdir -p $(PREFIX)/bin
-	install lavat $(PREFIX)/bin/lavat
+	install boids $(PREFIX)/bin/boids
 
 .PHONY: uninstall
 uninstall:
-	$(RM) $(PREFIX)/bin/lavat
+	$(RM) $(PREFIX)/bin/boids
 
